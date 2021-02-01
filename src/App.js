@@ -1,27 +1,35 @@
 import React, { Component } from 'react';
-  import logo from './logo.svg';
-  import './App.css';
-  //*** Import the Welcome component ***//
-  import Welcome from './components/welcome/Welcome';
-  //*** Import the Clock component ***//
-  import Clock from './components/clock/Clock';
-  //*** Import the Clock component ***//
-  import Contact from './components/contact/Contact';
+import { Route, Switch } from 'react-router-dom';
+import './App.css';
+import Welcome from './components/welcome/Welcome';
+import Clock from './components/clock/Clock';
+import Contact from './components/contact/Contact';
+import Navigation from './components/navigation/Navigation';
+
   class App extends Component {
     render() {
+      let routes =  <Switch>
+      <Navigation />
+      <Route exact path="/">
+        <Welcome name="Austin" />
+      </Route>
+      <Route 
+        path="/welcome/:name"
+        render={(props) => <Welcome {...props} name="Austin" />}
+      />
+      <Route path="/clock">
+        <Clock />
+      </Route>
+      <Route path="/contact">
+        <Contact />
+      </Route>
+    </Switch>
       return (
         <div className="App">
-          <div className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            {/* Adding the Welcome component and passing the value "Eric" to the "name" prop */}
-            <Welcome name="Zaddy" />
-            {/* Added the clock component here. Clock doesn't require any props. It manages everything with it's internal state */}
-          <Clock />
-          {/* Added the Contact component here. */}
-          <Contact />
+          {routes}
         </div>
-      </div>
       );
     }
   }
   export default App;
+  {/* <Route path="/contact" component={Contact} /> */}
