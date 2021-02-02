@@ -1,10 +1,14 @@
 import React from 'react';
+import { Component } from 'react';
 
-function Welcome(props) {
-    return (
-        <div>
-            <h1>Hello, {props.name}!</h1>
-        </div>
-    );
+class Welcome extends Component {
+   
+    render() {
+        return (
+            <div>
+                <h1>Hello, {this.props.match.params.name}{this.props.name}!</h1>
+             </div>
+    );  
+    }   
 }
 export default Welcome;

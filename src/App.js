@@ -1,35 +1,33 @@
-import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import React from 'react';
+import { Route, BrowserRouter as Router, Switch, IndexRoute } from 'react-router-dom';
 import './App.css';
 import Welcome from './components/welcome/Welcome';
 import Clock from './components/clock/Clock';
 import Contact from './components/contact/Contact';
 import Navigation from './components/navigation/Navigation';
+import NoMatch from './components/404page/404Page';
 
-  class App extends Component {
-    render() {
-      let routes =  <Switch>
-      <Navigation />
-      <Route exact path="/">
-        <Welcome name="Austin" />
-      </Route>
-      <Route 
-        path="/welcome/:name"
-        render={(props) => <Welcome {...props} name="Austin" />}
-      />
-      <Route path="/clock">
-        <Clock />
-      </Route>
-      <Route path="/contact">
-        <Contact />
-      </Route>
-    </Switch>
+  function App(props) {
       return (
-        <div className="App">
-          {routes}
-        </div>
+        <Router>
+          <div className="App">
+            <Route path="/" component={Navigation} />
+            <Route 
+              exact
+              path="/"
+              render={(props) => <Welcome {...props} name="Austin" />}
+            />
+            <Switch>
+            <Route 
+              path="/welcome/:name"
+              component={Welcome}
+            />
+            <Route path="/clock" component={Clock} />
+            <Route path="/contact" component={Contact} />
+            <Route path="/*" component={NoMatch} />
+            </Switch>
+          </div>
+        </Router>
       );
     }
-  }
   export default App;
-  {/* <Route path="/contact" component={Contact} /> */}
