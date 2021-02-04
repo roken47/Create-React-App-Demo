@@ -11,20 +11,21 @@ import NoMatch from './components/404page/404Page';
       return (
         <Router>
           <div className="App">
-            <Route path="/" component={Navigation} />
+            <Navigation />
+            
+            <Switch>
             <Route 
               exact
               path="/"
               render={(props) => <Welcome {...props} name="Austin" />}
             />
-            <Switch>
             <Route 
               path="/welcome/:name"
-              component={Welcome}
+              component={Welcome} />} 
             />
             <Route path="/clock" component={Clock} />
             <Route path="/contact" component={Contact} />
-            <Route path="/*" component={NoMatch} />
+            <Route component={NoMatch} />
             </Switch>
           </div>
         </Router>
