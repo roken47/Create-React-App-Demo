@@ -34,8 +34,6 @@ function Display(props) {
           <strong>{props.score}</strong>
         </div>
         <div>
-          
-            {/* form requires event.preventDefault() */}
             <label>
               <strong>Guess! </strong>
             </label>
