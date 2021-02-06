@@ -1,6 +1,5 @@
 import React from "react";
 import RickRoll from "../../assets/images/rickroll.jpg";
-import Loading from "../loading/Loading";
 
 function Display(props) {
 
@@ -12,10 +11,6 @@ function Display(props) {
       </div>
     );
   } else {
-    //TODO Notes for Hard Mode
-    //map() method to help with generating 3 questions and or its data?
-    //going to want the index of each data[i] or data[0] why Zero?
-    // -- Question -- Any way to console.log once for data set pulled from API? Every character renders it again in console.
     return (
       <div className="randomQuestion">
         <div id="randomQuestion">
@@ -54,10 +49,3 @@ function Display(props) {
 }
 
 export default Display;
-
-// Maybe for Hard Mode
-/*
- <button await={props.getNewQuestion}id={props.title}>{props.title}</button>
-          <button id={props.title}>{props.title}</button>
-          <button id={props.title}>{props.title}</button>
-*/
